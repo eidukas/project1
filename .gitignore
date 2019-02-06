@@ -26,4 +26,5 @@ docs/_build
 .idea/dictionaries
 .idea/shelf
 .idea/
+*.sqlite3
 
