@@ -95,6 +95,18 @@ class User(UserMixin, db.Model):
         return '<User %r>' % self.username
 
 
+class Book(db.Model):
+    __tablename__ = 'books'
+    id = db.Column(db.Integer, primary_key=True)
+    isbn = db.Column(db.String(20), unique=True)
+    title = db.Column(db.String(255), unique=True)
+    author = db.Column(db.String(255), unique=True)
+    year = db.Column(db.Integer(), unique=True)
+
+    def __repr__(self):
+        return '<Book %r>' % self.title
+
+
 @login_manager.user_loader
 def load_user(user_id):
     return User.query.get(int(user_id))

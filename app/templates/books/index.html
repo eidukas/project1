@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{#{% block title %}CS50 - Books{% endblock %}#}
+
+{#{% block page_content %}#}
+{#<div class="page-header">#}
+{##}
+{#    <h1>Hello, {% if current_user.is_authenticated %}{{ current_user.username }}{% else %}Stranger{% endif %}!</h1>#}
+{#</div>#}
+{#{% endblock %}#}
+
+{% block header %}
+    <h1>{% block title %}Books{% endblock %}</h1>
+    {% if g.user %}
+        <a class="action" href="{{ url_for('books.create') }}">New</a>
+    {% endif %}
+{% endblock %}
+
+{% block page_content %}
+    <div class="page-header">
+    {% for book in books %}
+        <article class="post">
+            <header>
+                <div>
+                    <p>ISBN: {{ book['isbn'] }}</p>
+                    <h2>{{ book['title'] }}</h2>
+                    <p>Written by: {{ book['author'] }}</p>
+                    <p>Year: {{ book['year'] }}</p>
+                </div>
+            </header>
+        </article>
+        {% if not loop.last %}
+            <hr>
+        {% endif %}
+    {% endfor %}
+    </div>
+{% endblock %}

@@ -32,6 +32,9 @@ def create_app(config_name):
     from .auth import auth as auth_blueprint
     app.register_blueprint(auth_blueprint, url_prefix='/auth')
 
+    from .books import books as books_blueprint
+    app.register_blueprint(books_blueprint, url_prefix='/books')
+
     return app
 
 
