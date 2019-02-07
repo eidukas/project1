@@ -11,12 +11,12 @@ class Config:
     MAIL_PORT = int(os.environ.get('MAIL_PORT', '587'))
     MAIL_USE_TLS = os.environ.get('MAIL_USE_TLS', 'true').lower() in \
         ['true', 'on', '1']
-    MAIL_USERNAME = os.environ.get('MAIL_USERNAME')
-    MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD')
+    MAIL_USERNAME = os.environ.get('MAIL_USERNAME', 'service.pimankova@gmail.com')
+    MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD', 'drucherato')
     CS50_MAIL_SUBJECT_PREFIX = '[CS50_P1]'
     CS50_MAIL_SENDER = 'CS50 P1 Admin <tomas.flask@gmail.com>'
 
-    FLASKY_ADMIN = os.environ.get('CS50_P1_ADMIN')
+    FLASKY_ADMIN = os.environ.get('CS50_P1_ADMIN', 'CS50_P1_ADMIN')
     SQLALCHEMY_TRACK_MODIFICATIONS = False
 
     SESSION_PERMANENT = False
@@ -30,7 +30,8 @@ class Config:
 class DevelopmentConfig(Config):
     DEBUG = True
     SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL') or \
-        'sqlite:///' + os.path.join(basedir, 'data-dev.sqlite')
+        'sqlite:///' + os.path.join(basedir, 'data-dev.sqlite3')
+    print(SQLALCHEMY_DATABASE_URI)
 
 
 class TestingConfig(Config):
@@ -41,7 +42,7 @@ class TestingConfig(Config):
 
 class ProductionConfig(Config):
     SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL') or \
-        'sqlite:///' + os.path.join(basedir, 'data.sqlite')
+        'sqlite:///' + os.path.join(basedir, 'data.sqlite3')
 
 
 config = {
