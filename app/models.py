@@ -8,7 +8,7 @@ from . import db, login_manager
 class Role(db.Model):
     __tablename__ = 'roles'
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(64), unique=True)
+    name = db.Column(db.String(64), unique=True, nullable=False)
     users = db.relationship('User', backref='role', lazy='dynamic')
 
     def __repr__(self):
@@ -98,13 +98,34 @@ class User(UserMixin, db.Model):
 class Book(db.Model):
     __tablename__ = 'books'
     id = db.Column(db.Integer, primary_key=True)
-    isbn = db.Column(db.String(20), unique=True)
-    title = db.Column(db.String(255), unique=True)
-    author = db.Column(db.String(255), unique=True)
-    year = db.Column(db.Integer(), unique=True)
+    isbn = db.Column(db.String(20), nullable=False)
+    title = db.Column(db.String(255), nullable=False)
+    author = db.Column(db.String(255), nullable=False)
+    year = db.Column(db.Integer(), nullable=False)
 
     def __repr__(self):
         return '<Book %r>' % self.title
+
+
+class CalendarEntry(db.Model):
+    __tablename__ = 'calendar'
+    id = db.Column(db.Integer, primary_key=True)
+    Industry = db.Column(db.Text(20))
+    Date = db.Column(db.Text(), nullable=True)
+    Ticker = db.Column(db.Text())
+    Event = db.Column(db.Text())
+
+    def __repr__(self):
+        return '<Calendar %r>' % self.Event
+
+
+class Review(db.Model):
+    __tablename__ = 'reviews'
+    reviews_id = db.Column(db.Integer, primary_key=True)
+    reviews_content = db.Column(db.String(255), nullable=False)
+
+    def __repr__(self):
+        return '<Review %r>' % self.reviews_content
 
 
 @login_manager.user_loader

@@ -1,0 +1,193 @@
+Industry,Date,Ticker,Event,id
+Renewables,06.12.18 00:00,ABY US,CMD,1
+Renewables,06.12.18 00:00,Renewables,India SECI 7 auction [tentative],2
+Renewables,06.12.18 00:00,Renewables,Alberta state 700MW auction results announcement (tentative),3
+Renewables,06.12.18 00:00,Renewables,UK onshore/offshore plants accounts publication [exp Dec],4
+Renewables,06.12.18 00:00,Offshore wind,"New Jersey offshore auction [exp in Dec-2018] 300-1,100MW",5
+Infrastructure,06.12.18 00:00,ATL IM,newsflow on Genoa/ASPI concession [tentative],6
+Infrastructure,06.12.18 00:00,FRA GR,Lima airport decision on tariffs [tentative],7
+Infrastructure,06.12.18 00:00,ADP FP,Discussion start with airlines on new regulatory period [end 2018 - early 2019],8
+Infrastructure,06.12.18 00:00,ADP FP,newsflow on Ataturk airport [tentative - co expect to have more info in 2019 on compensation/or extension],9
+Infrastructure,06.12.18 00:00,Airports,Gatwick airport sale [tentative],10
+Renewables,06.12.18 00:00,ERG IM,Glenmont partners solar portfolio acquisition (85MW for cEur350m) [tentative],11
+Renewables,06.12.18 00:00,ANA SM,decision on ATLL concession [tentative],12
+Renewables,10.12.18 00:00,Renewables,Greece wind and solar tender 129MW,13
+Infrastructure,10.12.18 00:00,AENA SM,Traffic (10-14th),14
+Infrastructure,10.12.18 00:00,ACS SM/ ATL IM/ HOT GY,Abertis board meeting,15
+Infrastructure,11.12.18 00:00,FHZN SW,Traffic,16
+Infrastructure,11.12.18 00:00,FER SM,HAH: Nov 2018 Traffic,17
+Infrastructure,12.12.18 00:00,ADP FP,Traffic,18
+Infrastructure,13.12.18 00:00,FRA GR,Traffic,19
+Infrastructure,13.12.18 00:00,GET FP,Shuttles traffic,20
+Renewables,13.12.18 00:00,Offshore wind,Lease auction in Massachusets,21
+Infrastructure,18.12.18 00:00,FER SM,HAH: December 2018 Investor Report,22
+Infrastructure,20.12.18 00:00,FER SM,Services business disposal: start of the process [Santander],23
+Renewables,27.12.18 00:00,Renewables,India Tamil Nadu state 500MW solar tender bid deadline,24
+Infrastructure,28.12.18 00:00,DG FP,Grand Paris project award [exp by year end or potentially pushed into 2019],25
+Infrastructure,28.12.18 00:00,DG FP,Agreement on Lisbon airport [by year end],26
+Infrastructure,28.12.18 00:00,DG FP,Belgrade airport acquisition closure [by year end],27
+Infrastructure,28.12.18 00:00,ATL IM/SIS IM,Tariffs announcement for FY19 (exp end Dec-2018],28
+Renewables,28.12.18 00:00,Renewables,India Tamil Nadu state 500MW wind tender bid deadline,29
+Infrastructure,28.12.18 00:00,FER SM,407ETR: new tariffs announced [est],30
+Renewables,28.12.18 00:00,ERG IM,solar JV with Quercus closure [exp by year end],31
+Renewables,28.12.18 00:00,ERG IM,Italy output data [exp before year end],32
+Renewables,28.12.18 00:00,Renewables,Finland 1.4TWh technology neutral auction - bids before year end,33
+Renewables,28.12.18 00:00,Renewables,Germany wind additions/permits data,34
+Infrastructure,01.01.19 00:00,FER SM,"partial opening of I-77 Managed Lanes (""in 1Q19"")",35
+Infrastructure,01.01.19 00:00,SPIE FP,Potential disposal of the remainder of SAG offshore,36
+Infrastructure,01.01.19 00:00,SPIE FP,"Potential closure of two bolt-on acquisitions, each w/ EUR50mn pa of sales [3Q18 results call]",37
+Infrastructure,01.01.19 00:00,ACS SM,"Potential sale of Bow Power to Brookfield [""press rumours in Aug""]",38
+Infrastructure,01.01.19 00:00,FER SM,"407ETR: SNC Lavaling selling 7% stake [""ongoing""]",39
+Infrastructure,01.01.19 00:00,FER SM,HAH: Publication of consultancy studies on the H7 WACC and the WACC for RP3 [1Q19],40
+Infrastructure,01.01.19 00:00,FER SM,HAH: Initial proposals for Interim Review (or consultation on commercial deal) [1Q19],41
+Infrastructure,01.01.19 00:00,FER SM,"Services segment disposal [""ongoing""]",42
+Infrastructure,01.01.19 00:00,FER SM,"Outcome of Birmingham contact [""disputing payments/entered into tech administration""]",43
+Infrastructure,01.01.19 00:00,FER SM,"HAH stage two consultations expected on airspace changes/new flights paths [""early 2019""]",44
+Infrastructure,01.01.19 00:00,FER SM,"HAH Consultation two for a development consent order (DCO) [""in 2019""]",45
+Infrastructure,01.01.19 00:00,FER SM,"Outcome of Mumbai airport bid [""ongoing""]",46
+Infrastructure,01.01.19 00:00,ABE SM,AP-7 final ruling [exp 2019],47
+Infrastructure,01.01.19 00:00,CIM AU,"Arbitration hearings re Gorgon Contract [""early 2019""]",48
+Infrastructure,01.01.19 00:00,CIM AU,"Appolo Management looking to sell their 50% take [""ongoing""]",49
+Infrastructure,01.01.19 00:00,ATL IM,ABE tariffs increase [exp to be announced in early Jan-2019],50
+Cables,01.01.19 00:00,NKT DC,"Rhine water levels (""ongoing"" / 2019 guidance assumes normalized lvl)",51
+Cables,01.01.19 00:00,PRY IM/NEX FP/NKT DC,VikingLink and NorthConnect awards [in 2019],52
+Business Services,10.01.19 00:00,SW FP,1Q19 results,53
+Infrastructure,11.01.19 00:00,DG FP,4Q18 airports traffic,54
+Infrastructure,11.01.19 00:00,FER SM,HAH: Dec 2018 Traffic,55
+Infrastructure,14.01.19 00:00,DG/FGR,Motorways proposal on FY19 tariffs - discussion,56
+Renewables,15.01.19 00:00,ORSTED DC,Danish power distribution and residential customer solution sale [exp 1H19],57
+Infrastructure,15.01.19 00:00,FGR FP,APRR transaction optionality [tentative],58
+Renewables,15.01.19 00:00,Offshore wind,Holland Coast 3&4 tender [exp Jan-2019],59
+Renewables,15.01.19 00:00,Renewables,South Africa renewables auction [tentive],60
+Renewables,15.01.19 00:00,Offshore wind,Massachusetts offshore auction [exp in 1H19] 800MW,61
+Renewables,15.01.19 00:00,Offshore wind,India 1GW offshore auction [tentative],62
+Infrastructure,21.01.19 00:00,DG FP/FGR FP,Tariffs announcement for FY19 (exp end Jan-2019],63
+Infrastructure,22.01.19 00:00,GET FP,4Q18 revenues,64
+Business Services,22.01.19 00:00,SW FP,AGM,65
+Infrastructure,25.01.19 00:00,ANA SM,Parliamentary report on Sydney Light Rail project [before Jan 25],66
+Infrastructure,25.01.19 00:00,Airports,Initial offers for Lille Airport concession,67
+Infrastructure,29.01.19 00:00,FGR FP,APRR 4Q18 results,68
+Renewables,29.01.19 00:00,SGRE SM,1Q19 results,69
+Property developers,30.01.19 00:00,KOF FP,FY18 results,70
+Renewables,30.01.19 00:00,US wind,AWEA report publication,71
+Renewables,31.01.19 00:00,GE US,FY18 results,72
+Renewables,31.01.19 00:00,ORSTED DC,FY18 results,73
+Renewables,31.01.19 00:00,Renewables,Germany wind additions/permits data,74
+Renewables,01.02.19 00:00,ANA SM,AEI minority stake sale [tentative],75
+Infrastructure,01.02.19 00:00,FGR FP,final bids for RCEA concession [exp in Feb],76
+Renewables,01.02.19 00:00,Offshore wind,"New York offshore auction] 800-1,200MW - bids in Feb",77
+Infrastructure,01.02.19 00:00,FER SM,Services business disposal: data room [Santander],78
+Infrastructure,01.02.19 00:00,ADP FP,Privatization discussion in Senate [over Feb],79
+Renewables,01.02.19 00:00,Renewables,Mexico energy auction results (exp in Feb19),80
+Renewables,01.02.19 00:00,Renewables,Germany onshore auction start,81
+Renewables,01.02.19 00:00,INXW IN,FY18 results (BBG),82
+Infrastructure,01.02.19 00:00,ADP FP,Tariffs final announcement for FY19 (exp in Feb-2019],83
+Infrastructure,01.02.19 00:00,FER SM,Budimex: potential 4Q18 results pre-annoucment (c. 20wd if quarterly results  +-40% yoy),84
+Renewables,02.02.19 00:00,ORSTED DC,Taiwan govnt decision on 2019 tariffs,85
+Renewables,05.02.19 00:00,Renewables,India 1.2GW wind central auction [tentative],86
+Infrastructure,05.02.19 00:00,Airports,Sofia airport tender - deadline to bid,87
+Infrastructure,06.02.19 00:00,DG FP,FY18 results,88
+Infrastructure,06.02.19 00:00,CIM AU,FY18 results (est),89
+Infrastructure,07.02.19 00:00,FER SM,ETR407: FY18 results,90
+Infrastructure,07.02.19 00:00,DFDS DC,FY18 results,91
+Renewables,07.02.19 00:00,VWS DC,FY18 results,92
+Renewables,08.02.19 00:00,SUEL IN,FY18 results (BBG),93
+Infrastructure,08.02.19 00:00,SKAB SS,FY18 results,94
+Renewables,10.02.19 00:00,SPK SM,FY18 results (BBG),95
+Infrastructure,11.02.19 00:00,FER SM,HAH: Jan 2019 Traffic,96
+Infrastructure,13.02.19 00:00,FRA GR,Traffic,97
+Property developers,13.02.19 00:00,NXI FP/KOF FP/EN FP,4Q18 French reservations and new home sales (est),98
+Cables,14.02.19 00:00,NEX FP,FY18 results,99
+Infrastructure,14.02.19 00:00,ADP FP,FY18 results,100
+Renewables,15.02.19 00:00,Offshore wind,Germany decision on incremental c5GW of offshore auctions [exp in Feb],101
+Infrastructure,15.02.19 00:00,ADP FP,French reg body decision on FY19 tariffs (deadline),102
+Renewables,15.02.19 00:00,Renewables,Germany onshore auction results [exp],103
+Infrastructure,15.02.19 00:00,EN FP,TF1 FY18 results,104
+Infrastructure,15.02.19 00:00,CLNX SM,FY18 results (est),105
+Property developers,19.02.19 00:00,NXI FP,FY18 results,106
+Infrastructure,21.02.19 00:00,FER SM,HAH: FY18 results (pre market),107
+Infrastructure,21.02.19 00:00,GET FP,FY18 results,108
+Infrastructure,21.02.19 00:00,HOT GR,FY18 results (tbc),109
+Infrastructure,21.02.19 00:00,EN FP,FY18 results,110
+Infrastructure,22.02.19 00:00,SNC CN,FY18 results (est),111
+Cables,25.02.19 00:00,PRY IM,FY18 results (est),112
+Renewables,25.02.19 00:00,ERG IM,Update on Italy repowering [with FY18 results],113
+Infrastructure,25.02.19 00:00,SIS IM,FY18 results (BBG),114
+Renewables,26.02.19 00:00,Renewables,Colombia 1GW auction,115
+Renewables,26.02.19 00:00,BWEN US,FY18 results (BBG),116
+Infrastructure,26.02.19 00:00,CIM AU,Findings of MTR inquiry,117
+Infrastructure,27.02.19 00:00,AENA SM,FY18 results,118
+Infrastructure,27.02.19 00:00,FGR FP,FY18 results,119
+Infrastructure,27.02.19 00:00,FER SM,Budimex: FY18 results (pre market),120
+Renewables,28.02.19 00:00,ANA SM,FY18 results,121
+Cables,28.02.19 00:00,NKT DC,FY18 results,122
+Infrastructure,28.02.19 00:00,FER SM,FY18 results (after market),123
+Infrastructure,28.02.19 00:00,ACS SM,FY18 results (est),124
+Renewables,28.02.19 00:00,Offshore wind,France offshore auction (Dunkirk area) bid deadline [end Feb],125
+Renewables,28.02.19 00:00,Renewables,Germany wind additions/permits data,126
+Renewables,01.03.19 00:00,Offshore wind,"New York offshore auction] 800-1,200MW - awards in Spring",127
+Infrastructure,01.03.19 00:00,FRA GR,agreement on 3 Greece airport fees increase to be signed [before start of summer season],128
+Infrastructure,01.03.19 00:00,ADP FP,Privatization discussion with National Assembly/Constitutional court [over Mar-Apr19],129
+Infrastructure,01.03.19 00:00,Airports,Summer capacity announcements [exp in 1H of March],130
+Renewables,01.03.19 00:00,NEOEN FP,FY18 results (BBG),131
+Infrastructure,01.03.19 00:00,ATL IM,FY18 results (BBG),132
+Renewables,05.03.19 00:00,ORSTED DC,AGM,133
+Renewables,06.03.19 00:00,ERG IM,FY18 results,134
+Renewables,07.03.19 00:00,Renewables,Turkey onshore auction - bids deadline,135
+Business Services,12.03.19 00:00,SPIE FP,FY18 results,136
+Infrastructure,12.03.19 00:00,FHZN SW,FY18 results,137
+Infrastructure,13.03.19 00:00,FRA GR,Traffic,138
+Renewables,14.03.19 00:00,SEN GR,FY18 results,139
+Retail,14.03.19 00:00,DUFN SW,FY18 results ,140
+Infrastructure,15.03.19 00:00,FER SM,HAH: Feb 2019 Traffic,141
+Infrastructure,19.03.19 00:00,FRA GR,FY18 results,142
+Infrastructure,21.03.19 00:00,SKAB SS,CMD,143
+Cables,21.03.19 00:00,NKT DC,AGM,144
+Renewables,26.03.19 00:00,NDX1 GR,FY18 results,145
+Renewables,27.03.18 00:00,Renewables,Argentina renewables auction - bid end (in March),146
+Renewables,31.03.19 00:00,Renewables,Germany wind additions/permits data,147
+Renewables,01.04.19 00:00,Renewables,AWEA report publication [exp April],148
+Infrastructure,01.04.19 00:00,ADP FP,Bidders to access data room [exp Apr-Jul],149
+Renewables,01.04.19 00:00,Renewables,France onshore auction [exp in April],150
+Renewables,01.04.19 00:00,Renewables,UK CFD auction final budged announcement [exp in April],151
+Infrastructure,05.04.19 00:00,ADP FP,Investor day,152
+Infrastructure,12.04.19 00:00,FRA GR,Traffic,153
+Infrastructure,15.04.19 00:00,FER SM,HAH: Mar 2019 Traffic,154
+Business Services,30.04.19 00:00,SPIE FP,1Q19 results,155
+Renewables,30.04.19 00:00,Renewables,Germany wind additions/permits data,156
+Infrastructure,01.05.19 00:00,ADP FP,Privatization winning bidder to be announced before summer [exp May],157
+Renewables,01.05.19 00:00,ORSTED DC,UK CFD auction (May),158
+Renewables,01.05.19 00:00,Renewables,Germany onshore auction start,159
+Infrastructure,01.05.19 00:00,Airports,Japan Hokaido airports deadline to bid (May-2019) - DG/ADP participates,160
+Retail,14.05.19 00:00,DUFN SW,1Q19 results,161
+Infrastructure,14.05.19 00:00,FRA GR,Traffic,162
+Renewables,01.05.19 00:00,Renewables,Germany onshore auction results [exp],163
+Infrastructure,07.05.19 00:00,HOT GY,AGM,164
+Renewables,17.05.19 00:00,Renewables,Argentina renewables auction - results,165
+Renewables,31.05.19 00:00,Renewables,Germany wind additions/permits data,166
+Infrastructure,01.06.19 00:00,FER SM,Full Opening of I-77 Managed Lanes ('in summer'),167
+Infrastructure,01.06.19 00:00,Airports,Preferred bidder selection for Lille Airport (exp Jun-19),168
+Infrastructure,01.06.19 00:00,FHZN SW,decision on Transfer Payments regulation [summer 2019],169
+Renewables,2019-06-31,ORSTED DC,UK offshore wind projects extension [process to take up to 9months from Oct-18],170
+Infrastructure,01.07.19 00:00,FER SM/HOT GY,Award of Silvertown Tunnel [in July],171
+Renewables,01.07.19 00:00,Offshore wind,New Jersey offshore auction results [exp in July],172
+Renewables,01.07.19 00:00,Offshore wind,Holland Coast North 1&2 offshore auction [exp in 2H19] 760MW,173
+Infrastructure,01.07.19 00:00,Airports,Japan Hokaido airports preferred bidder selection (exp Jul-Aug),174
+Renewables,01.07.19 00:00,ORSTED DC,Kust North offshore auction,175
+Infrastructure,01.07.19 00:00,Airports,Hokaido airports prefered bidder annoucement [exp Jul-2019],176
+Business Services,26.07.19 00:00,SPIE FP,2Q19 results,177
+Infrastructure,01.09.19 00:00,FHZN SW,implementation of Transfer Payments regulation [summer 2019],178
+Renewables,01.09.19 00:00,ADP FP,Privatization closure [exp Sep-2019],179
+Renewables,01.10.19 00:00,Renewables,Germany onshore auction,180
+Infrastructure,01.10.19 00:00,AENA SM,Dufry contract decision [end 2019],181
+Business Services,08.11.19 00:00,SPIE FP,3Q19 results,182
+Infrastructure,01.12.19 00:00,FER SM,HAH: HAL regulatory business plan (December 2019),183
+Renewables,01.01.20 00:00,Offshore wind,Denmark offshore auction [exp in 2020] 800MW,184
+Infrastructure,01.01.20 00:00,FHZN SW,negotiations start on new regulatory period [1H20],185
+Renewables,01.07.20 00:00,Offshore wind,"New Jersey offshore auction [exp in 2H20] 1,200mw",186
+Renewables,01.07.20 00:00,Offshore wind,"New York offshore auction [exp in 2H20] 800-1,200MW",187
+Renewables,01.07.20 00:00,Offshore wind,Holland Coast West 1 offshore auction [exp in 2H20] 760MW,188
+Infrastructure,01.10.20 00:00,FER SM,HAH: CAA initial proposals for H7 review [3Q],189
+Renewables,01.01.21 00:00,Offshore wind,Belgium offshore auction [exp in 2021] 700MW,190
+Renewables,01.05.21 00:00,Offshore wind,UK CFD auction (exp in May-2021),191
+Renewables,01.07.21 00:00,Offshore wind,Holland Coast West 2 offshore auction [exp in 2H21] 760MW,192
