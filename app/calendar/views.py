@@ -6,16 +6,20 @@ from flask_login import login_required, current_user
 from .forms import SearchForm
 from . import calendar
 
-# from ..models import CalendarEntry
+from ..models import CalendarEntry
 
 
-# @calendar.route('/')
-# @login_required
-# def index():
-#     return render_template('calendar/index.html')
-
-
-@calendar.route('/search')
+@calendar.route('/', methods=['get'])
 @login_required
 def index():
-    return render_template('calendar/search.html')
+    entries = CalendarEntry.query.all()
+
+    return render_template('calendar/index.html', entries=entries)
+
+
+@calendar.route('/search', methods=['get'])
+@login_required
+def search():
+    entries = CalendarEntry.query.all()
+
+    return render_template('calendar/search.html', entries=entries)

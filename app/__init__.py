@@ -35,8 +35,8 @@ def create_app(config_name):
     from .books import books as books_blueprint
     app.register_blueprint(books_blueprint, url_prefix='/books')
 
-    # from .calendar import calendar as calendar_blueprint
-    # app.register_blueprint(calendar_blueprint, url_prefix='/calendar')
+    from .calendar import calendar as calendar_blueprint
+    app.register_blueprint(calendar_blueprint, url_prefix='/calendar')
 
     return app
 

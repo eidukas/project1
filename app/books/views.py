@@ -12,10 +12,5 @@ from ..models import Book
 def index():
     books = Book.query.all()
 
-    # db = get_db()
-    # books = db.execute(
-    #     'SELECT id, isbn, title, author, year'
-    #     ' FROM books '
-    # ).fetchall()
     return render_template('books/index.html', books=books)
 
