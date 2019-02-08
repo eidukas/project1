@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}Create Entry{% endblock %}
+
+{% block page_content %}
+<div class="page-header">
+    <h1>Create Entry</h1>
+</div>
+<div class="col-md-4">
+    {{ wtf.quick_form(form) }}
+    <br>
+    <input formaction="{{ url_for('calendar.create'}}" type="submit" value="Create" name="create_button" />
+    <input formaction="{{ url_for('calendar.index') }}" type="button" value="Back to the calendar" name="back_button" />
+</div>
+{% endblock %}

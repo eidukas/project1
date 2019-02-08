@@ -1,14 +1,10 @@
 {% extends "base.html" %}
 
 
-{% block header %}
-    <h1>{% block title %}Calendar{% endblock %}</h1>
-    {% if g.user %}
-        <a class="action" href="{{ url_for('books.create') }}">New</a>
-    {% endif %}
-{% endblock %}
+{% block title %}Calendar{% endblock %}
 
 {% block page_content %}
+    <a class="action" href="{{ url_for('calendar.create') }}">New</a>
     <div class="page-header">
         {% for entry in entries %}
         <article class="post">
@@ -18,6 +14,14 @@
                     <h2>Event: {{ entry['Event'] }}</h2>
                     <p>Date: {{ entry['Date'] }}</p>
                     <p>Ticker: {{ entry['Ticker'] }}</p>
+
+                    <form action="" method="POST"  >
+                    <!--<p><a href="{{ url_for('calendar.update', id=entry['id'])}}">Update</a>-->
+                    <input formaction="{{ url_for('calendar.update', id=entry['id'])}}" type="submit" value="Update" name="update_button" />
+                    <!--<p><a href="{{ url_for('calendar.delete', id=entry['id'])}}">Delete</a>-->
+                    <input formaction="{{ url_for('calendar.delete', id=entry['id'])}}" type="submit" value="Delete" name="delete_button" />
+                    <!--</p>-->
+                    </form>
                 </div>
             </header>
         </article>
