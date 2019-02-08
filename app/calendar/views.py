@@ -24,19 +24,16 @@ def save_changes(entry, form, new=False):
     """
     # Get data from form and assign it to the correct attributes
     # of the SQLAlchemy table object
-    entry = CalendarEntry()
-    print(form.id.data)
-    if form.id.data is not '':
-        entry.id = int(form.id.data)
     entry.Industry = form.industry.data
-    entry.Date = form.date.data.isoformat(),
+    entry.Date = form.date.data,
     entry.Event = form.event.data,
     entry.Ticker = form.ticker.data,
     print('entry', entry)
-    # if new:
-    #     print('new')
+    if form.id.data is not '':
+        entry.id = int(form.id.data)
+    else:
         # Add the new album to the database
-    db.session.add(entry)
+        db.session.add(entry)
 
     # commit the data to the database
     db.session.commit()
@@ -50,34 +47,16 @@ def create():
 
     if request.method == 'POST' and form.validate():
         # save the entry
-        album = CalendarEntry()
-        save_changes(album, form, new=True)
+        entry = CalendarEntry()
+        save_changes(entry, form)
         flash('Entry created successfully!')
         return redirect(url_for('calendar.index'))
     return render_template('calendar/create.html', form=form)
-
-    # form = CreateUpdateEntryForm()
-    # print('form', form)
-    # if form.validate_on_submit():
-    #     print('if')
-    #     entry = CalendarEntry(Date=form.date.data,
-    #                 Event=form.event.data,
-    #                 Ticker=form.ticker.data,
-    #                 Industry=form.industry.data)
-    #     print('entry', entry)
-    #     db.session.add(entry)
-    #     db.session.commit()
-    #     flash('Calendar entry was added')
-    #     return redirect(url_for('calendar.index'))
-    # print('else')
-    # return render_template('calendar/create.html', form=form)
 
 
 @calendar.route('/<id>/update', methods=['get', 'post'])
 @login_required
 def update(id):
-    # @app.route('/item/<int:id>', methods=['GET', 'POST'])
-    # def edit(id):
     instance = CalendarEntry.query.filter_by(id=id).first()
 
     if instance:
@@ -90,25 +69,13 @@ def update(id):
                                      formdata=request.form)
         print('form', form.ticker, form.industry)
         if request.method == 'POST' and form.validate():
-            # save edits
+            form.populate_obj(instance)
             save_changes(instance, form)
             flash('Calendar entry was updated')
             return redirect(url_for('calendar.index'))
         return render_template('calendar/update.html', form=form, entry_id=instance.id)
     else:
         return 'Error loading #{id}'.format(id=id)
-    # instance = CalendarEntry.query.filter_by(id=id).first()
-    # form = CreateUpdateEntryForm(instance)
-    # if form.validate_on_submit():
-    #     entry = CalendarEntry(Date=form.date.data,
-    #                           Event=form.event.data,
-    #                           Ticket=form.ticket.data,
-    #                           Industry=form.industry.data)
-    #     db.session.add(entry)
-    #     db.session.commit()
-    #     flash('Calendar entry was updated')
-    #     return redirect(url_for('calendar.index'))
-    # return render_template('calendar/update.html', form=form)
 
 
 @calendar.route('/<int:id>/delete', methods=['post'])

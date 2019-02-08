@@ -8,9 +8,17 @@
     <h1>Create Entry</h1>
 </div>
 <div class="col-md-4">
-    {{ wtf.quick_form(form) }}
-    <br>
-    <input formaction="{{ url_for('calendar.create'}}" type="submit" value="Create" name="create_button" />
-    <input formaction="{{ url_for('calendar.index') }}" type="button" value="Back to the calendar" name="back_button" />
+    <form class="form form-horizontal" method="post" role="form">
+        {{ form.hidden_tag() }}
+        {{ wtf.form_errors(form, hiddens="only") }}
+
+        {{ wtf.form_field(form.industry) }}
+        {{ wtf.form_field(form.date) }}
+        {{ wtf.form_field(form.ticker) }}
+        {{ wtf.form_field(form.event) }}
+        <br>
+        <input formaction="{{ url_for('calendar.create')}}" type="submit" value="Create" name="create_button" />
+        <a href="{{ url_for('calendar.index') }}">Back to the calendar</a>
+    </form>
 </div>
 {% endblock %}
