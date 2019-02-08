@@ -9,15 +9,16 @@
         {{ message }}
     </div>
     {%  endfor %}
-
-    <input formaction="{{ url_for('calendar.create')}}" type="submit" value="Close" style="margin-left: 50%;" />
-
     <script>
-    setTimeout(function() {
-        if (window.parent && window.parent.closeModale) {
-            window.parent.closeModale();
+        function close() {
+            if (window.parent && window.parent.closeModale) {
+                window.parent.closeModale();
+            }
         }
-    }, 2000);
+        setTimeout(close, 2000);
     </script>
+
+    <input formaction="{{ url_for('calendar.create')}}" type="submit" value="Close" onclick="close()" style="margin-left: 50%;" />
+
 </div>
 {% endblock %}

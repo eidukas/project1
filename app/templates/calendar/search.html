@@ -5,6 +5,17 @@
     <link rel="stylesheet" herf="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/css/bootstrap.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <style>
+        #menu {
+            position: absolute;
+            left: -200px;
+            top: -200px;
+        }
+
+        #menu div, #menu span {
+            pointer-events: none;
+        }
+    </style>
 {% endblock %}
 
 {% block header %}
@@ -15,6 +26,7 @@
 {% endblock %}
 
 {% block page_content %}
+    <button id="create-new" style="float: right;">Create new record</button>
     <label>Filters by date</label>
     </br>
     <label for="from">From</label>
@@ -33,29 +45,70 @@
         </thead>
         <tbody>
         {% for entry in entries %}
-            <tr>
-                <td>{{ entry['Industry'] }}</td>
-                <td>{{ entry['Event'] }}</td>
-                <!-- HARD CODE !!! NEED CHANGE RESPONCE FROM THE SERVER -->
-                <td>{{ filterdate(entry['Date']) }}</td>
-                <td>{{ entry['Ticker'] }}</td>
+            <tr data-id="{{ entry['id'] }}" id="row_{{ entry['id'] }}">
+                <td data-field="1">{{ entry['Industry'] }}</td>
+                <td data-field="2">{{ entry['Event'] }}</td>
+                <td data-field="3">{{ entry['Date'] }}</td>
+                <td data-field="4">{{ entry['Ticker'] }}</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <ul id="menu" style="width:150px">
+        <li data-action="create">
+            <div><span class="ui-icon ui-icon-document"></span>Create new</div>
+        </li>
+        <li data-action="change">
+            <div><span class="ui-icon ui-icon-pencil"></span>Change</div>
+        </li>
+        <li data-action="delete">
+            <div><span class="ui-icon ui-icon-trash"></span>Delete</div>
+        </li>
+    </ul>
+
+<div id="dialog-form" title="Create/edit calendar">
+    <iframe src="about:_blank" style="width:100%; height:100%; border:0;" id="editframe" ></iframe>
+</div>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
 
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 {% endblock %}
 
 {% block scripts %}
     <script>
+
+    var dialog = null;
+    $(function(){
+        dialog = $( "#dialog-form" ).dialog({
+          autoOpen: false,
+          height: 550,
+          width: 750,
+          modal: true,
+          close: function() {
+            $('#editframe').attr('src', '_blank');
+          }
+        });
+        $('#create-new').on('click', function(){
+            $('#editframe').attr('src', '/calendar/add');
+            dialog.dialog( "open" );
+        });
+        window.closeModale = function () {
+            dialog.dialog( "close" );
+        }
+    });
+
         var books_table = $('#books_table')
         $(document).ready(function () {
             books_table = books_table.DataTable();
+
+            $("#menu").menu({
+                disabled: true
+            });
         });
 
         var dateFormat = "dd.mm.yy";
@@ -145,6 +198,51 @@
                 }
             );
         })
-        ;
+
+        var contextId = null;
+
+        // CONTEXT MENU
+        $("#books_table").contextmenu(function (event) {
+            event.preventDefault();
+            $("#menu").menu("enable");
+            $("#menu").css({top: event.clientY, left: event.clientX})
+            console.log($("#menu"), event.clientX, event.clientY);
+
+            contextId = event.target.parentNode.dataset.id;
+
+            console.log("====Right Click====", event.target.parentNode.dataset.id, event.target.dataset.field, event);
+        });
+
+        document.querySelector("#menu").addEventListener("click", function (event) {
+            event.preventDefault();
+            console.log("====ACTION====", contextId, event.target.dataset.action);
+
+            switch(event.target.dataset.action) {
+                case 'create':
+                    $('#editframe').attr('src', '/calendar/add');
+                    dialog.dialog("open");
+                    break;
+                case 'change':
+                    $('#editframe').attr('src', '/calendar/' + contextId + '/update');
+                    dialog.dialog("open");
+                    break;
+                case 'delete':
+                    if (confirm("Do you really want to delete record?")) {
+                        $.ajax({
+                            type: "POST",
+                            url: '/calendar/' + contextId + '/delete',
+                            success: function () {
+                                $('#row_' + contextId).empty();
+                            }
+                        });
+                    }
+            }
+
+        });
+        document.addEventListener("click", function (event) {
+
+            $("#menu").menu("disable");
+            $("#menu").css({top: -1000, left: -1000})
+        });
     </script>
 {% endblock %}
