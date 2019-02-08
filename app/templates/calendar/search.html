@@ -38,7 +38,7 @@
                 <td>{{ entry['Event'] }}</td>
                 <!-- HARD CODE !!! NEED CHANGE RESPONCE FROM THE SERVER -->
                 <td>{{ filterdate(entry['Date']) }}</td>
-                <td>{{ entry['Ticker'].decode() }}</td>
+                <td>{{ entry['Ticker'] }}</td>
             </tr>
         {% endfor %}
         </tbody>

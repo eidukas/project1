@@ -1,0 +1,23 @@
+{% extends "bootstrap/base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block content %}
+<div style="padding: 20px;">
+    {%  for message in get_flashed_messages() %}
+    <div class="alert alert-warning">
+        <button type="button" class="close" data-dismiss="alert">x</button>
+        {{ message }}
+    </div>
+    {%  endfor %}
+
+    <input formaction="{{ url_for('calendar.create')}}" type="submit" value="Close" style="margin-left: 50%;" />
+
+    <script>
+    setTimeout(function() {
+        if (window.parent && window.parent.closeModale) {
+            window.parent.closeModale();
+        }
+    }, 2000);
+    </script>
+</div>
+{% endblock %}

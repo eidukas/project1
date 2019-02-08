@@ -111,7 +111,7 @@ class CalendarEntry(db.Model):
     __tablename__ = 'calendar_new'
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     Industry = db.Column(db.Text())
-    Date = db.Column(db.DateTime())
+    Date = db.Column(db.Date())
     Ticker = db.Column(db.Text())
     Event = db.Column(db.Text())
 

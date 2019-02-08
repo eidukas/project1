@@ -25,9 +25,9 @@ def save_changes(entry, form, new=False):
     # Get data from form and assign it to the correct attributes
     # of the SQLAlchemy table object
     entry.Industry = form.industry.data
-    entry.Date = form.date.data,
-    entry.Event = form.event.data,
-    entry.Ticker = form.ticker.data,
+    entry.Event = form.event.data
+    entry.Date = form.date.data
+    entry.Ticker = form.ticker.data
     print('entry', entry)
     if form.id.data is not '':
         entry.id = int(form.id.data)
@@ -50,7 +50,7 @@ def create():
         entry = CalendarEntry()
         save_changes(entry, form)
         flash('Entry created successfully!')
-        return redirect(url_for('calendar.index'))
+        return redirect(url_for('calendar.close'))
     return render_template('calendar/create.html', form=form)
 
 
@@ -72,7 +72,7 @@ def update(id):
             form.populate_obj(instance)
             save_changes(instance, form)
             flash('Calendar entry was updated')
-            return redirect(url_for('calendar.index'))
+            return redirect(url_for('calendar.close'))
         return render_template('calendar/update.html', form=form, entry_id=instance.id)
     else:
         return 'Error loading #{id}'.format(id=id)
@@ -87,6 +87,12 @@ def delete(id):
     flash('Calendar entry was deleted')
     return redirect(url_for('calendar.index'))
 
+
+
+@calendar.route('/done', methods=['get'])
+@login_required
+def close():
+    return render_template('calendar/empty.html')
 
 def filterdate(r):
     return r.strftime('%Y-%m-%d')
