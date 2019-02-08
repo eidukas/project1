@@ -1,0 +1,6 @@
+id,email,username,role_id,password_hash,confirmed
+1,te@covaliscapital.com,eidukas,1,pbkdf2:sha256:50000$jEX0zoLF$52ef4e4c8e77e42ec62695693020a8f5276e4ef83752f3759e788388482e0c42,f
+2,tomas.eidukas@gmail.com,tomas,2,pbkdf2:sha256:50000$XkKdnBcu$8996c8b21e3d6711b85d342cf25a8dd0dcb39c21c5f0b263145ac0ff5ba8ccd5,t
+3,natalya2487@gmail.com,natalya,,pbkdf2:sha256:50000$M0Lc90bn$cd2c3a099678f76d65afafcab14dba20f4641c3fa8b9206321841580256aab9a,1
+4,pimankov.e@gmail.com,pema,,pbkdf2:sha256:50000$PyXTIGD2$a3e417831900b19d2d5f80cd8c60b53da4b19e910196fca56170d7b1f5b2dfaa,1
+5,service.pimankova@gmail.com,admin,,pbkdf2:sha256:50000$2qxHrmWI$3ed5ef4919a209ff4f725b8e01c3adcc6f233747bf801d8faa6695e0bfaa9ad3,1

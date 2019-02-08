@@ -97,7 +97,7 @@ class User(UserMixin, db.Model):
 
 class Book(db.Model):
     __tablename__ = 'books'
-    id = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     isbn = db.Column(db.String(20), nullable=False)
     title = db.Column(db.String(255), nullable=False)
     author = db.Column(db.String(255), nullable=False)
@@ -109,9 +109,9 @@ class Book(db.Model):
 
 class CalendarEntry(db.Model):
     __tablename__ = 'calendar'
-    id = db.Column(db.Integer, primary_key=True)
-    Industry = db.Column(db.Text(20))
-    Date = db.Column(db.Text(), nullable=True)
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    Industry = db.Column(db.Text())
+    Date = db.Column(db.DateTime())
     Ticker = db.Column(db.Text())
     Event = db.Column(db.Text())
 
