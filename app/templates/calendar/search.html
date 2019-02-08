@@ -4,7 +4,7 @@
     {{ super() }}
     <link rel="stylesheet" herf="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/css/bootstrap.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.css">
     <style>
         #menu {
             position: absolute;
@@ -45,7 +45,7 @@
         </thead>
         <tbody>
         {% for entry in entries %}
-            <tr data-id="{{ entry['id'] }}" id="row_{{ entry['id'] }}">
+            <tr data-id="{{ entry['id'] }}" id="row_{{ entry['id'] }}" class="data-row">
                 <td data-field="1">{{ entry['Industry'] }}</td>
                 <td data-field="2">{{ entry['Event'] }}</td>
                 <td data-field="3">{{ entry['Date'] }}</td>
@@ -84,13 +84,29 @@
 
     var dialog = null;
     $(function(){
+
+        var updateData = function() {
+            /*$.ajax({
+                type: "GET",
+                url: '/calendar/search',
+                success: function (data) {
+                    console.log(data);
+                    var books_table = $('#books_table');
+                    books_table.html($('#books_table', $(data)).html());
+                    books_table = books_table.DataTable();
+                }
+            });*/
+            location.reload();
+        };
+
         dialog = $( "#dialog-form" ).dialog({
           autoOpen: false,
           height: 550,
           width: 750,
           modal: true,
           close: function() {
-            $('#editframe').attr('src', '_blank');
+            $('#editframe').attr('src', 'about:_blank');
+            updateData();
           }
         });
         $('#create-new').on('click', function(){
@@ -98,6 +114,8 @@
             dialog.dialog( "open" );
         });
         window.closeModale = function () {
+            $('#editframe').attr('src', 'about:_blank');
+            updateData();
             dialog.dialog( "close" );
         }
     });
@@ -232,7 +250,7 @@
                             type: "POST",
                             url: '/calendar/' + contextId + '/delete',
                             success: function () {
-                                $('#row_' + contextId).empty();
+                                updateData();
                             }
                         });
                     }
