@@ -27,12 +27,10 @@ def upgrade():
     sa.PrimaryKeyConstraint('id')
     )
     op.create_table('calendar',
-    sa.Column('id', sa.Integer(), autoincrement=True, nullable=False),
     sa.Column('Industry', sa.Text(), nullable=True),
-    sa.Column('Date', sa.DateTime(), nullable=True),
+    sa.Column('Date', sa.Text(), nullable=True),
     sa.Column('Ticker', sa.Text(), nullable=True),
     sa.Column('Event', sa.Text(), nullable=True),
-    sa.PrimaryKeyConstraint('id')
     )
     op.create_table('reviews',
     sa.Column('reviews_id', sa.Integer(), nullable=False),
