@@ -71,6 +71,7 @@
                 })
                 .on("change", function () {
                     to.datepicker("option", "minDate", getDate(this));
+                    books_table.draw();
                 }),
                 to = $("#to").datepicker({
                     defaultDate: "+1w",
@@ -79,6 +80,7 @@
                 })
                     .on("change", function () {
                         from.datepicker("option", "maxDate", getDate(this));
+                        books_table.draw();
                     });
 
             function getDate(element) {
@@ -90,57 +92,58 @@
                     date = null;
                 }
 
-                // HARD CODE
-                setTimeout(function () {
-                    books_table.column(2).data().search(filtringByRangeDate()).draw();
-                }, 500);
                 console.log("return ", date);
                 return date;
-            }
-
-            function filtringByRangeDate() {
-                var from = isCorrectDate($("#from").val());
-                var to = isCorrectDate($("#to").val());
-                console.log("filtringByRangeDate", from, to);
-                if (!from || !to) {
-                    return "";
-                }
-                var filteredData = books_table
-                    .column(2)
-                    .data()
-                    .filter(function (value, index) {
-                        console.log("filter callback", value);
-                        return true;
-                        return intoRange(value, from, to);
-                    });
-                return "";
             }
 
             function isCorrectDate(date) {
                 var d = date.replace(/(\d\d)\.(\d\d)\.(\d\d)/, '$2.$1.$3');
                 d = Date.parse(d);
-                console.log(date, d);
                 return Number.isNaN(d) ? false : d;
             }
 
             function intoRange(value, from, to) {
+                if (!from && !to) {
+                    return true;
+                }
                 // HARD CODE YEAR process 18 to 2018
                 var year = value.replace(/(\d\d)\.(\d\d)\.(\d\d)/, '$2.$1.20$3');
-                console.log("FILTER_1", value, year, from, to)
+                console.log("FILTER_1", value, year, from, to);
                 year = Date.parse(year);
                 if (Number.isNaN(year)) {
                     console.error("Error parse date", value, typeof value, year);
                     return false;
                 }
 
-                if (year > from && year < to) {
+                if (from && to && year > from && year < to) {
                     console.log("FILTER_2", value, year, from, to);
                     return true;
                 } else {
-                    console.log("FILTER_3", value, year, from, to);
+                    if (from && to) {
+                        return false;
+                    }
+                    if (from && from && year > from) {
+                        console.log("FILTER_3", value, year, from, to);
+                        return true;
+                    }
+                    if (to && to && year < to) {
+                        console.log("FILTER_4", value, year, from, to);
+                        return true;
+                    }
+                    console.log("FILTER_5", value, year, from, to);
                     return false;
                 }
             }
+
+            $.fn.dataTable.ext.search.push(
+                function (settings, data, dataIndex) {
+                    console.log("ext.search.push_1", settings, data, dataIndex);
+                    var from = isCorrectDate($("#from").val());
+                    var to = isCorrectDate($("#to").val());
+                    console.log("ext.search.push_2", from, to);
+                    return intoRange(data[2], from, to);
+                }
+            );
         })
         ;
     </script>
