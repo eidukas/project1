@@ -1,28 +1,150 @@
 {% extends "base.html" %}
 
+{% block head %}
+    {{ super() }}
+    <link rel="stylesheet" herf="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/css/bootstrap.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+{% endblock %}
+
 {% block header %}
-    <h1>{% block title %}Calendar Search{% endblock %}</h1>
+    <h1>{% block title %}Calendar{% endblock %}</h1>
     {% if g.user %}
         <a class="action" href="{{ url_for('books.create') }}">New</a>
     {% endif %}
 {% endblock %}
 
 {% block page_content %}
-    <div class="page-header">
-    {% for entry in entries %}
-        <article class="post">
-            <header>
-                <div>
-                    <p>Industry: {{ entry['Industry'] }}</p>
-                    <h2>Event: {{ entry['Event'] }}</h2>
-                    <p>Date: {{ entry['Date'] }}</p>
-                    <p>Ticker: {{ entry['Ticker'] }}</p>
-                </div>
-            </header>
-        </article>
-        {% if not loop.last %}
-            <hr>
-        {% endif %}
-    {% endfor %}
-    </div>
+    <label>Filters by date</label>
+    </br>
+    <label for="from">From</label>
+    <input type="text" id="from" name="from">
+    <label for="to">to</label>
+    <input type="text" id="to" name="to">
+    </br></br>
+    <table id="books_table" class="table table-striped table-bordered" style="width:100%">
+        <thead>
+        <tr>
+            <th>Industry</th>
+            <th>Event</th>
+            <th>Date</th>
+            <th>Ticker</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for entry in entries %}
+            <tr>
+                <td>{{ entry['Industry'] }}</td>
+                <td>{{ entry['Event'] }}</td>
+                <!-- HARD CODE !!! NEED CHANGE RESPONCE FROM THE SERVER -->
+                <td>{{ filterdate(entry['Date']) }}</td>
+                <td>{{ entry['Ticker'].decode() }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+{% endblock %}
+
+{% block scripts %}
+    <script>
+        var books_table = $('#books_table')
+        $(document).ready(function () {
+            books_table = books_table.DataTable();
+        });
+
+        var dateFormat = "dd.mm.yy";
+        $.datepicker.setDefaults({
+            dateFormat: dateFormat
+        });
+        $(function () {
+            from = $("#from")
+                .datepicker({
+                    defaultDate: "+1w",
+                    changeMonth: true,
+                    numberOfMonths: 1
+                })
+                .on("change", function () {
+                    to.datepicker("option", "minDate", getDate(this));
+                    books_table.draw();
+                }),
+                to = $("#to").datepicker({
+                    defaultDate: "+1w",
+                    changeMonth: true,
+                    numberOfMonths: 1
+                })
+                    .on("change", function () {
+                        from.datepicker("option", "maxDate", getDate(this));
+                        books_table.draw();
+                    });
+
+            function getDate(element) {
+                var date;
+                try {
+                    date = $.datepicker.parseDate(dateFormat, element.value);
+                } catch (error) {
+                    console.error(error);
+                    date = null;
+                }
+
+                console.log("return ", date);
+                return date;
+            }
+
+            function isCorrectDate(date) {
+                var d = date.replace(/(\d\d)\.(\d\d)\.(\d\d)/, '$2.$1.$3');
+                d = Date.parse(d);
+                return Number.isNaN(d) ? false : d;
+            }
+
+            function intoRange(value, from, to) {
+                if (!from && !to) {
+                    return true;
+                }
+                // HARD CODE YEAR process 18 to 2018
+                var year = value.replace(/(\d\d)\.(\d\d)\.(\d\d)/, '$2.$1.20$3');
+                console.log("FILTER_1", value, year, from, to);
+                year = Date.parse(year);
+                if (Number.isNaN(year)) {
+                    console.error("Error parse date", value, typeof value, year);
+                    return false;
+                }
+
+                if (from && to && year > from && year < to) {
+                    console.log("FILTER_2", value, year, from, to);
+                    return true;
+                } else {
+                    if (from && to) {
+                        return false;
+                    }
+                    if (from && from && year > from) {
+                        console.log("FILTER_3", value, year, from, to);
+                        return true;
+                    }
+                    if (to && to && year < to) {
+                        console.log("FILTER_4", value, year, from, to);
+                        return true;
+                    }
+                    console.log("FILTER_5", value, year, from, to);
+                    return false;
+                }
+            }
+
+            $.fn.dataTable.ext.search.push(
+                function (settings, data, dataIndex) {
+                    console.log("ext.search.push_1", settings, data, dataIndex);
+                    var from = isCorrectDate($("#from").val());
+                    var to = isCorrectDate($("#to").val());
+                    console.log("ext.search.push_2", from, to);
+                    return intoRange(data[2], from, to);
+                }
+            );
+        })
+        ;
+    </script>
 {% endblock %}

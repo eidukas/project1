@@ -13,7 +13,7 @@
                     <p>Industry: {{ entry['Industry'] }}</p>
                     <h2>Event: {{ entry['Event'] }}</h2>
                     <p>Date: {{ entry['Date'] }}</p>
-                    <p>Ticker: {{ entry['Ticker'] }}</p>
+                    <p>Ticker: {{ entry['Ticker'].decode() }}</p>
 
                     <form action="" method="POST"  >
                     <!--<p><a href="{{ url_for('calendar.update', id=entry['id'])}}">Update</a>-->

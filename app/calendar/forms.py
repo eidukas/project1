@@ -1,7 +1,8 @@
 from datetime import datetime
 
 from flask_wtf import FlaskForm
-from wtforms import StringField, SubmitField, DateField, DateTimeField, SelectMultipleField, HiddenField
+from wtforms import StringField, SubmitField, SelectMultipleField, HiddenField
+from wtforms.fields.html5 import DateField, DateTimeField
 from wtforms.validators import DataRequired
 
 
@@ -17,7 +18,7 @@ class FilterForm(FlaskForm):
 
 class CreateUpdateEntryForm(FlaskForm):
     id = HiddenField('id')
-    date = DateTimeField('Date', validators=[DataRequired()])
+    date = DateField('Date', validators=[DataRequired()])
     event = StringField('Event', validators=[DataRequired()])
     industry = StringField('Industry', validators=[DataRequired()])
     ticker = StringField('Ticker', validators=[DataRequired()])

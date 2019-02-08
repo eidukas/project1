@@ -108,7 +108,7 @@ class Book(db.Model):
 
 
 class CalendarEntry(db.Model):
-    __tablename__ = 'calendar'
+    __tablename__ = 'calendar_new'
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     Industry = db.Column(db.Text())
     Date = db.Column(db.DateTime())

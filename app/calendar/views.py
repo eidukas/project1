@@ -88,9 +88,13 @@ def delete(id):
     return redirect(url_for('calendar.index'))
 
 
+def filterdate(r):
+    return r.strftime('%Y-%m-%d')
+
+
 @calendar.route('/search', methods=['get'])
 @login_required
 def search():
     entries = CalendarEntry.query.all()
 
-    return render_template('calendar/search.html', entries=entries)
+    return render_template('calendar/search.html', entries=entries, filterdate=filterdate)
