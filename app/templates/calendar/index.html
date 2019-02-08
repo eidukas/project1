@@ -5,6 +5,17 @@
     <link rel="stylesheet" herf="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/css/bootstrap.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <style>
+        #menu {
+            position: absolute;
+            left: -200px;
+            top: -200px;
+        }
+
+        #menu div, #menu span {
+            pointer-events: none;
+        }
+    </style>
 {% endblock %}
 
 {% block header %}
@@ -33,16 +44,28 @@
         </thead>
         <tbody>
         {% for entry in entries %}
-            <tr>
-                <td>{{ entry['Industry'] }}</td>
-                <td>{{ entry['Event'] }}</td>
+            <tr data-id="{{ entry['id'] }}">
+                <td data-field="1">{{ entry['Industry'] }}</td>
+                <td data-field="2">{{ entry['Event'] }}</td>
                 <!-- HARD CODE !!! NEED CHANGE RESPONCE FROM THE SERVER -->
-                <td>{{ entry['Date'].replace(' 00:00','') }}</td>
-                <td>{{ entry['Ticker'] }}</td>
+                <td data-field="3">{{ entry['Date'].replace(' 00:00','') }}</td>
+                <td data-field="4">{{ entry['Ticker'] }}</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
+
+    <ul id="menu" style="width:150px">
+        <li data-action="create">
+            <div><span class="ui-icon ui-icon-document"></span>Create new</div>
+        </li>
+        <li data-action="change">
+            <div><span class="ui-icon ui-icon-pencil"></span>Change</div>
+        </li>
+        <li data-action="delete">
+            <div><span class="ui-icon ui-icon-trash"></span>Delete</div>
+        </li>
+    </ul>
 
     <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
     <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
@@ -56,6 +79,10 @@
         var books_table = $('#books_table')
         $(document).ready(function () {
             books_table = books_table.DataTable();
+
+            $("#menu").menu({
+                disabled: true
+            });
         });
 
         var dateFormat = "dd.mm.yy";
@@ -145,6 +172,24 @@
                 }
             );
         })
-        ;
+
+        // CONTEXT MENU
+        $("#books_table").contextmenu(function (event) {
+            event.preventDefault();
+            $("#menu").menu("enable");
+            $("#menu").css({top: event.clientY, left: event.clientX})
+            console.log($("#menu"), event.clientX, event.clientY);
+
+            console.log("====Right Click====", event.target.parentNode.dataset.id, event.target.dataset.field, event);
+        });
+
+        document.querySelector("#menu").addEventListener("click", function (event) {
+            event.preventDefault();
+            console.log("====ACTION====", event.target.dataset.action);
+        });
+        document.addEventListener("click", function (event) {
+            $("#menu").menu("disable");
+            $("#menu").css({top: -1000, left: -1000})
+        });
     </script>
 {% endblock %}

@@ -1,10 +1,21 @@
 {% extends "base.html" %}
 
-
 {% block head %}
     {{ super() }}
     <link rel="stylesheet" herf="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/css/bootstrap.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <style>
+        #menu {
+            position: absolute;
+            left: -200px;
+            top: -200px;
+        }
+
+        #menu div, #menu span {
+            pointer-events: none;
+        }
+    </style>
 {% endblock %}
 
 {% block header %}
@@ -29,19 +40,33 @@
         </thead>
         <tbody>
         {% for book in books %}
-            <tr>
-                <td>{{ book['isbn'] }}</td>
-                <td>{{ book['title'] }}</td>
-                <td>{{ book['author'] }}</td>
-                <td>{{ book['year'] }}</td>
+            <tr data-id="{{ book['id'] }}">
+                <td data-field="1">{{ book['isbn'] }}</td>
+                <td data-field="2">{{ book['title'] }}</td>
+                <td data-field="3">{{ book['author'] }}</td>
+                <td data-field="4">{{ book['year'] }}</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
+    <ul id="menu" style="width:150px">
+        <li data-action="create">
+            <div><span class="ui-icon ui-icon-document"></span>Create new</div>
+        </li>
+        <li data-action="change">
+            <div><span class="ui-icon ui-icon-pencil"></span>Change</div>
+        </li>
+        <li data-action="delete">
+            <div><span class="ui-icon ui-icon-trash"></span>Delete</div>
+        </li>
+    </ul>
+
     <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
     <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 {% endblock %}
 
 {% block scripts %}
@@ -49,6 +74,28 @@
         $(document).ready(function () {
             console.log($('#books_table'));
             $('#books_table').DataTable();
+            $("#menu").menu({
+                disabled: true
+            });
+        });
+
+        // CONTEXT MENU
+        $("#books_table").contextmenu(function (event) {
+            event.preventDefault();
+            $("#menu").menu("enable");
+            $("#menu").css({top: event.clientY, left: event.clientX})
+            console.log($("#menu"), event.clientX, event.clientY);
+
+            console.log("====Right Click====", event.target.parentNode.dataset.id, event.target.dataset.field, event);
+        });
+
+        document.querySelector("#menu").addEventListener("click", function (event) {
+            event.preventDefault();
+            console.log("====ACTION====", event.target.dataset.action);
+        });
+        document.addEventListener("click", function (event) {
+            $("#menu").menu("disable");
+            $("#menu").css({top: -1000, left: -1000})
         });
     </script>
 {% endblock %}
