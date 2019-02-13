@@ -10,10 +10,18 @@
             position: absolute;
             left: -200px;
             top: -200px;
+            padding:5px;
         }
-
+        #menu .hide{
+          opacity:0.3;
+        }
         #menu div, #menu span {
             pointer-events: none;
+        }
+        .ui-icon {
+          zoom: 125%;
+          transform: scale(1.25);
+          display:inline-block;
         }
     </style>
 {% endblock %}
@@ -50,22 +58,19 @@
         </tbody>
     </table>
 
-    <ul id="menu" style="width:150px">
-        <li data-action="create">
-            <div><span class="ui-icon ui-icon-document"></span>Create new</div>
-        </li>
-        <li data-action="change">
-            <div><span class="ui-icon ui-icon-pencil"></span>Change</div>
-        </li>
-        <li data-action="delete">
-            <div><span class="ui-icon ui-icon-trash"></span>Delete</div>
-        </li>
-    </ul>
+    <div id="menu" class="hide">
+      <button title="Change" data-action="change"><span class="ui-icon ui-icon-pencil"></span></button>
+      <button title="Delete" data-action="delete"><span class="ui-icon ui-icon-trash"></span></button>
+    </div>
+
+    <div id="dialog-form" title="Create/edit calendar">
+        <iframe src="about:_blank" style="width:100%; height:100%; border:0;" id="editframe" ></iframe>
+    </div>
+
 
     <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
     <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
-
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 {% endblock %}
 
@@ -74,27 +79,79 @@
         $(document).ready(function () {
             console.log($('#books_table'));
             $('#books_table').DataTable();
-            $("#menu").menu({
-                disabled: true
-            });
         });
 
-        // CONTEXT MENU
-        $("#books_table").contextmenu(function (event) {
-            event.preventDefault();
-            $("#menu").menu("enable");
-            $("#menu").css({top: event.clientY, left: event.clientX})
-            console.log($("#menu"), event.clientX, event.clientY);
+        var updateData = function() {
+            location.reload();
+        };
 
-            console.log("====Right Click====", event.target.parentNode.dataset.id, event.target.dataset.field, event);
+        dialog = $( "#dialog-form" ).dialog({
+          autoOpen: false,
+          height: 550,
+          width: 750,
+          modal: true,
+          close: function() {
+            $('#editframe').attr('src', 'about:_blank');
+            updateData();
+          }
+        });
+        $('#create-new').on('click', function(){
+            $('#editframe').attr('src', '/calendar/add');
+            dialog.dialog( "open" );
+        });
+        window.closeModale = function () {
+            $('#editframe').attr('src', 'about:_blank');
+            updateData();
+            dialog.dialog( "close" );
+        }
+
+        $( "tr" ).hover(
+          function(event) {
+            var tr = event.target.parentNode;
+            var id = tr.dataset.id;
+            var offset=$(tr).offset();
+            $("#menu").attr("data-id", id);
+            $("#menu").removeClass("hide");
+            $("#menu").css({top: offset.top+2, left: offset.left-85});
+            },
+            function(event){
+              $("#menu").addClass("hide");
+              //$("#menu").css({top: -1000, left: -1000});
+            }
+        );
+        $("#menu").hover(
+        function(event){
+          $("#menu").removeClass("hide");
         });
 
         document.querySelector("#menu").addEventListener("click", function (event) {
             event.preventDefault();
-            console.log("====ACTION====", event.target.dataset.action);
+            console.log("====ACTION====", event.target.parentNode.dataset, event.target.dataset.action);
+            var contextId=event.target.parentNode.dataset.id;
+            switch(event.target.dataset.action) {
+                case 'create':
+                    $('#editframe').attr('src', '/calendar/add');
+                    dialog.dialog("open");
+                    break;
+                case 'change':
+                    $('#editframe').attr('src', '/calendar/' + contextId + '/update');
+                    dialog.dialog("open");
+                    break;
+                case 'delete':
+                    if (confirm("Do you really want to delete record?")) {
+                        $.ajax({
+                            type: "POST",
+                            url: '/calendar/' + contextId + '/delete',
+                            success: function () {
+                                updateData();
+                            }
+                        });
+                    }
+            }
+
         });
         document.addEventListener("click", function (event) {
-            $("#menu").menu("disable");
+            //$("#menu").menu("disable");
             $("#menu").css({top: -1000, left: -1000})
         });
     </script>
