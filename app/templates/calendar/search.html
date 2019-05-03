@@ -46,18 +46,19 @@
         <thead>
         <tr>
             <th>Industry</th>
-            <th>Event</th>
             <th>Date</th>
             <th>Ticker</th>
+            <th>Event</th>
+
         </tr>
         </thead>
         <tbody>
         {% for entry in entries %}
             <tr data-id="{{ entry['id'] }}" id="row_{{ entry['id'] }}" class="data-row">
                 <td data-field="1">{{ entry['Industry'] }}</td>
-                <td data-field="2">{{ entry['Event'] }}</td>
-                <td data-field="3">{{ entry['Date'] }}</td>
-                <td data-field="4">{{ entry['Ticker'] }}</td>
+                <td data-field="2">{{ entry['Date'] }}</td>
+                <td data-field="3">{{ entry['Ticker'] }}</td>
+                <td data-field="4">{{ entry['Event'] }}</td>
             </tr>
         {% endfor %}
         </tbody>
