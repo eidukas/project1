@@ -49,16 +49,21 @@
             <th>Date</th>
             <th>Ticker</th>
             <th>Event</th>
-
+            <th>QR</th>
         </tr>
         </thead>
         <tbody>
         {% for entry in entries %}
-            <tr data-id="{{ entry['id'] }}" id="row_{{ entry['id'] }}" class="data-row">
+            <tr data-id="{{ entry['id'] }}"
+                    data-date="{{ entry['Date'] }}"
+                    data-qr="{{ entry['quarterly_report'] }}"
+                    id="row_{{ entry['id'] }}" class="data-row"
+            >
                 <td data-field="1">{{ entry['Industry'] }}</td>
                 <td data-field="2">{{ entry['Date'] }}</td>
                 <td data-field="3">{{ entry['Ticker'] }}</td>
                 <td data-field="4">{{ entry['Event'] }}</td>
+                <td data-field="5">{{ entry['quarterly_report'] }}</td>
             </tr>
         {% endfor %}
         </tbody>

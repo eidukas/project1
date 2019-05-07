@@ -12,6 +12,7 @@
         {{ wtf.form_field(form.date) }}
         {{ wtf.form_field(form.ticker) }}
         {{ wtf.form_field(form.event) }}
+        {{ wtf.form_field(form.quarterly_report) }}
         <br>
         <input formaction="{{ url_for('calendar.update', id=entry_id)}}" type="submit" value="Update" name="update_button" />
     </form>

@@ -28,6 +28,7 @@ def save_changes(entry, form, new=False):
     entry.Event = form.event.data
     entry.Date = form.date.data
     entry.Ticker = form.ticker.data
+    entry.quarterly_report = form.quarterly_report.data
     print('entry', entry)
     if form.id.data is not '':
         entry.id = int(form.id.data)

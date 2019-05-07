@@ -114,6 +114,7 @@ class CalendarEntry(db.Model):
     Date = db.Column(db.Date())
     Ticker = db.Column(db.Text())
     Event = db.Column(db.Text())
+    quarterly_report = db.Column(db.Boolean())
 
     def __repr__(self):
         return '<Calendar %r>' % self.Event
